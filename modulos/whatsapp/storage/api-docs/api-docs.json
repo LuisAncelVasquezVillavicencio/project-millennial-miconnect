@@ -1,0 +1,142 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Whatsapp OpenApi",
+        "description": "Whatsapp OpenApi descripción",
+        "contact": {
+            "email": "lvasquez@millev.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0",
+        "x-logo": {
+            "url": "https://via.placeholder.com/190x90.png?text=L5-Swagger"
+        }
+    },
+    "paths": {
+        "/whatsapp/sendTextMessages": {
+            "post": {
+                "tags": [
+                    "sendTextMessages"
+                ],
+                "summary": "Envio de mensaje de texto",
+                "description": "Permite el envio de mensajes de texto por whatsapp",
+                "operationId": "sendTextMessages",
+                "parameters": [
+                    {
+                        "name": "to",
+                        "in": "query",
+                        "description": "Numero de telefono al cual se enviara el mensaje debe contener el codigo del pais",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "51993370198"
+                        }
+                    },
+                    {
+                        "name": "idNumTel",
+                        "in": "query",
+                        "description": "Identificador de número de teléfono brindado por facebook",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "109949925143071"
+                        }
+                    },
+                    {
+                        "name": "recipient_type",
+                        "in": "query",
+                        "description": "actualmante solo individual",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "individual"
+                        }
+                    },
+                    {
+                        "name": "preview_url",
+                        "in": "query",
+                        "description": "se coloca true si el texto contiene https y false si no tiene",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "false"
+                        }
+                    },
+                    {
+                        "name": "body",
+                        "in": "query",
+                        "description": "Texto o contenido del mensaje",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "hola"
+                        }
+                    },
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Token de Facebook Api Whatsapp",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "Bearer EAAPmKaDlIbEBAGuIu2KtIeX2MoWsS2P6THLmjixBZA8OmvdQqF989hKdRO9ZCTMVMk0acZAJT8nIUZC769T4uGyBO1ORR0Hj6Y6JLoZAC"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "messaging_product": {
+                                                "type": "string",
+                                                "example": "whatsapp"
+                                            },
+                                            "contacts": {
+                                                "type": "string",
+                                                "items": "[{ input: PHONE_NUMBER , wa_id: WHATSAPP_ID }]"
+                                            },
+                                            "messages": {
+                                                "type": "string",
+                                                "items": "[{ id: wamid.ID }]"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                },
+                "deprecated": false
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "name": "bearerAuth",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+composer create-project --prefer-dist laravel/laravel auth
+composer require laravel/passport
+php artisan migrate
+php artisan passport:install
+---
+Encryption keys generated successfully.
+Personal access client created successfully.
+Client ID: 1
+Client secret: Wn9tLZSbakg2aI3pL6B6l605ULtDqEg0tAlgGGRF
+Password grant client created successfully.
+Client ID: 2
+Client secret: oclVhiiEXgwIfQIv4EJrqFAS3IM6niu2LsVslBUS
+---
+php artisan make:controller AuthController
+
+http://localhost/MiSalud/public/api/auth/signup?name=luis&email=lvasquez2@millev.com&password=123456
+
+http://localhost/MiSalud/public/api/auth/login

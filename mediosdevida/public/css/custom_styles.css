@@ -1,0 +1,27 @@
+.dot_con {
+   height: 10px;
+   width: 10px;
+   background-color: green;
+   border-radius: 50%;
+   display: inline-block;
+}
+.dot_lo {
+   height: 10px;
+   width: 10px;
+   background-color: yellow;
+   border-radius: 50%;
+   display: inline-block;
+}
+.dot_dis{
+   height: 10px;
+   width: 10px;
+   background-color: red;
+   border-radius: 50%;
+   display: inline-block; 
+}
+.con_status{
+   margin-top:2px;display: table;position: relative;height:100%;
+}
+.con_status_in{
+   display: table-cell;vertical-align: middle;
+}
